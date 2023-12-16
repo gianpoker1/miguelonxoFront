@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Registro de Usuario</h2>
+<mat-dialog-content>
+    <form [formGroup]="usuarioForm">
+        <mat-form-field appearance="fill" class="full-width">
+            <input matInput formControlName="name" placeholder="Nombre">
+            <mat-error *ngIf="usuarioForm.controls['name'].invalid">El nombre es requerido</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" class="full-width">
+            <input matInput formControlName="email" placeholder="Email">
+            <mat-error *ngIf="usuarioForm.controls['email'].invalid">El email es requerido</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput formControlName="password" placeholder="Contraseña" type="password">
+            <mat-error *ngIf="usuarioForm.controls['password'].invalid">La contraseña es requerida</mat-error>
+        </mat-form-field>
+        <br>
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="cerrarModal()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="registrarUsuario()">Registrarse</button>
+</mat-dialog-actions>

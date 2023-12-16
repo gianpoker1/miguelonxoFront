@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <ng-container *ngIf="!isLoggedIn; else loggedInMenu">
+        <button mat-button (click)="abrirModalRegistro()">Registrarse</button>
+        <button mat-button (click)="abrirModalLogin()">Inciar Sesion</button>
+    </ng-container>
+
+    <ng-template #loggedInMenu>
+        <button mat-button (click)="authService.logout()">Cerrar sesion</button>
+        <!-- Admin -->
+        <ng-container *ngIf="isAdmin()">
+        <button mat-button routerLink="/torneos">Torneos</button>
+        <button mat-button routerLink="/ligas">Ligas</button>
+        <button mat-button routerLink="/jugadores">Jugadores</button>
+        </ng-container>
+        <!--Player-->
+        <ng-container *ngIf="isPlayer()">
+            <button mat-button routerLink="/playerTorneos">Torneos</button>
+            <button mat-button routerLink="/playerLigas">Ligas</button>
+        </ng-container>
+    </ng-template>
+</mat-toolbar>
